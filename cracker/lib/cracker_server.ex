@@ -21,6 +21,11 @@ defmodule CrackerServer do
   def start_link(socket) do
     GenServer.start_link(__MODULE__, [socket], name: __MODULE__)
   end
+
+  def stop() do
+    GenServer.stop(__MODULE__)
+  end
+
   # ----------------------------------------- #
   # Server - API                              #
   # i.e. Server calls the following functions #

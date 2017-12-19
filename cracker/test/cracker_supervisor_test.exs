@@ -6,4 +6,12 @@ defmodule CrackerSupervisor.Test do
     {:ok, server_pid} = CrackerSupervisor.start_link([socket])
     {:ok, [server: server_pid, socket: socket]}
   end
+
+  test "supervisor restarts after exit", %{server: pid, socket: socket} do
+    assert {:ok, "rock on"} == CrackerServer.pick_lock(socket)
+    CrackerServer.stop()
+    :timer.sleep 1000
+    assert {:ok, "rock on"} == CrackerServer.pick_lock(socket)
+  end
+
 end
