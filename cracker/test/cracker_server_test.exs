@@ -10,4 +10,5 @@ defmodule CrackerServerTest do
   test "try default combination returns ok", %{server: pid, socket: socket} do
     assert {:ok, "rock on"} == CrackerServer.pick_lock(pid, socket)
   end
+
 end
