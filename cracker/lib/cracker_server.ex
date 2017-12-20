@@ -44,7 +44,6 @@ defmodule CrackerServer do
       |> Enum.reject(fn(value) -> value == "Can't crack me!" end)
       |> List.first
 
-    IO.puts "Message: #{message}"
     {:reply, {:ok, message}, []}
   end
 
