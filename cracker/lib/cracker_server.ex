@@ -57,4 +57,16 @@ defmodule CrackerServer do
     message
   end
 
+  defp ref(server_name) do
+    {:global, {:combolock, server_name}}
+  end
+
+  defp try_call(server_id, message) do
+    case GenServer.whereis(ref(server_id)) do
+      nil ->
+        {:error, :invalid_server}
+      combolock ->
+        GenServer.call(combolock, message)
+    end
+  end
 end
