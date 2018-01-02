@@ -8,10 +8,7 @@ defmodule Cracker.Application do
   end
 
   def start(host, port) do
-    {:ok, socket} = Sendr.connect(host, port)
-    CrackerSupervisor.start_link([socket])
-    {:ok, message} = CrackerServer.pick_lock(socket)
-    IO.puts(message)
+    # what should i do now?
   end
 
   def parse_args(args \\ []) do

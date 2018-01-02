@@ -7,23 +7,23 @@ defmodule CrackerServer do
   # ----------------------------------------- #
 
   def pick_lock(socket) do
-    GenServer.call(__MODULE__,  {:pick, socket})
+    # what should i do now?
   end
 
   def pick_lock(server_pid, socket) do
-    GenServer.call(server_pid, {:pick, socket})
+    # what should i do now?
   end
 
   def start_link([socket]) do
-    GenServer.start_link(__MODULE__, [socket], name: __MODULE__)
+    # what should i do now?
   end
 
   def start_link(socket) do
-    GenServer.start_link(__MODULE__, [socket], name: __MODULE__)
+    # what should i do now?
   end
 
   def stop() do
-    GenServer.stop(__MODULE__)
+    # what should i do now?
   end
 
   # ----------------------------------------- #
@@ -32,41 +32,26 @@ defmodule CrackerServer do
   # ----------------------------------------- #
 
   def init([socket]) do
-    {:ok, [socket]}
+    # what should i do now?
   end
 
   def handle_call({:pick, socket}, _from, [socket]) do
-    message = 120..130
-      |> Enum.map(fn(guess) ->
-            Sendr.send_message(socket, guess)
-            |> examine_contents
-          end )
-      |> Enum.reject(fn(value) -> value == "Can't crack me!" end)
-      |> List.first
-
-    {:reply, {:ok, message}, []}
+    # what should i do now?
   end
 
   def examine_contents({:ok, message}) do
-    # found it, so just return
-    message
+    # what should i do now?
   end
 
   def examine_contents({:error, message}) do
-    # do nothing since i got nothing
-    message
+    # what should i do now?
   end
 
   defp ref(server_name) do
-    {:global, {:combolock, server_name}}
+    # what should i do now?
   end
 
   defp try_call(server_id, message) do
-    case GenServer.whereis(ref(server_id)) do
-      nil ->
-        {:error, :invalid_server}
-      combolock ->
-        GenServer.call(combolock, message)
-    end
+    # what should i do now?
   end
 end
